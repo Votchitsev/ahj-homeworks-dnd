@@ -35,3 +35,42 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.popup {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  background-color: #798c97;
+  border-radius: 5px;
+  box-shadow: 2px 2px #1e3c4d;
+  z-index: 1;
+}
+
+.active {
+  display: flex;
+}
+
+.popup-title {
+  align-self: center;
+  padding: 20px;
+  text-transform: uppercase;
+}
+
+input[type="text"] {
+  margin: 20px;
+  padding: 5px;
+  font-size: inherit;
+}
+
+input[type="submit"] {
+  margin: 40px;
+  height: 50px;
+  font-size: inherit;
+  text-transform: uppercase;
+  cursor: pointer;
+}
