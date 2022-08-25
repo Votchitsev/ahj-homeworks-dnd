@@ -1,0 +1,37 @@
+body {
+  display: flex;
+  justify-content: space-around;
+  background-color: #107abb;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: #dee2e5;
+  border-radius: 5px;
+  width: 33%;
+}
+
+.container-title {
+  text-transform: uppercase;
+  color: #1e3c4d;
+  padding: 20px;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.container-add-btn {
+  color: #798c97;
+  padding: 20px;
+}
+
+.container-add-btn:hover {
+  cursor: pointer;
+}
+
+.container-content {
+  display: flex;
+  flex-direction: column;
+}
