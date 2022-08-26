@@ -1,8 +1,12 @@
-import Container from "./Container";
+import Container from './Container';
 
 const containers = document.querySelectorAll('.container');
 
-for (let i = 0; i < containers.length; i += 1) {
-  const container = new Container(containers.item(i), i);
-  container.addListeners();
-}
+const todoContainer = new Container(containers[0], 0);
+todoContainer.addListeners();
+
+const inProgressContainer = new Container(containers[1], 1);
+inProgressContainer.addListeners();
+
+const doneContainer = new Container(containers[2], 2);
+doneContainer.addListeners();
