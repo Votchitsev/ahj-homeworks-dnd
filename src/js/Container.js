@@ -1,3 +1,6 @@
+import dragnDrop from './DragnDrop';
+
+
 class Container {
   constructor(element) {
     this.element = element;
@@ -36,7 +39,7 @@ class Container {
 
   createTask(task, containerEl) {
     const container = containerEl;
-    container.innerHTML += `<div class=task>${task}<span class="close">&#215</span></div>`;
+    container.innerHTML += `<div class="task">${task}<span class="close">&#215</span></div>`;
     const createdTask = container.lastElementChild;
     this.addTaskListeners(createdTask);
 
@@ -58,6 +61,8 @@ class Container {
     closeEl.addEventListener('click', (e) => {
       e.target.parentNode.remove();
     });
+
+    dragnDrop(createdTask);
   }
 }
 
