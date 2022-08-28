@@ -22,7 +22,7 @@ class Container {
       if (!this.element.contains(e.target)) {
         this.closeForm();
       }
-    })
+    });
   }
 
   openForm() {
@@ -36,8 +36,28 @@ class Container {
 
   createTask(task, containerEl) {
     const container = containerEl;
-    container.innerHTML += `<div class=task>${task}</div>`;
+    container.innerHTML += `<div class=task>${task}<span class="close">&#215</span></div>`;
+    const createdTask = container.lastElementChild;
+    this.addTaskListeners(createdTask);
+
     this.closeForm();
+  }
+
+  addTaskListeners(task) {
+    const createdTask = task;
+    const closeEl = createdTask.querySelector('.close');
+
+    createdTask.addEventListener('mouseenter', () => {
+      closeEl.classList.add('active');
+    });
+
+    createdTask.addEventListener('mouseleave', () => {
+      closeEl.classList.remove('active');
+    });
+
+    closeEl.addEventListener('click', (e) => {
+      e.target.parentNode.remove();
+    });
   }
 }
 

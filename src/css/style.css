@@ -42,6 +42,18 @@ body {
   flex-direction: column;
 }
 
+
+.close {
+  display: none;
+  position: absolute;
+  top: 2px;
+  right: 5px;
+}
+
+.close:hover {
+  cursor: pointer;
+}
+
 .active {
   display: flex;
 }
@@ -62,10 +74,15 @@ input[type="submit"] {
 }
 
 .task {
+  position: relative;
   display: block;
   background-color: white;
   margin: 10px;
   padding: 15px;
   border-radius: 5px;
   box-shadow: rgb(174, 173, 173) 2px 2px;
+}
+
+.task:hover {
+  background-color: rgb(251, 246, 246);
 }
