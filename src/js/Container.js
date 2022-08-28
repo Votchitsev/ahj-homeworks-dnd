@@ -2,7 +2,7 @@ class Container {
   constructor(element) {
     this.element = element;
     this.currentContainer = this.element.querySelector('.container-content');
-    this.form = this.element.querySelector('.popup');
+    this.form = this.element.querySelector('.create-task');
     this.addBtn = this.element.querySelector('.container-add-btn');
 
     this.createTask = this.createTask.bind(this);
@@ -17,6 +17,12 @@ class Container {
       const { value } = this.element.querySelector('input[type="text"]');
       this.createTask(value, this.currentContainer);
     });
+
+    window.addEventListener('click', (e) => {
+      if (!this.element.contains(e.target)) {
+        this.closeForm();
+      }
+    })
   }
 
   openForm() {
