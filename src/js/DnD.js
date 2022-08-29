@@ -7,6 +7,7 @@ class DragnDrop {
     this.moveAt = this.moveAt.bind(this);
     this.onMouseDown = this.onMouseDown.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
+    this.onMouseUp = this.onMouseUp.bind(this);
   }
 
   init() {
@@ -35,6 +36,7 @@ class DragnDrop {
     this.activeEl.classList.add('hidden');
 
     this.moveEl.addEventListener('mousemove', this.onMouseMove);
+    document.documentElement.addEventListener('mouseup', this.onMouseUp);
   }
 
   moveAt(e) {
@@ -44,16 +46,33 @@ class DragnDrop {
 
   onMouseMove(e) {
     this.moveAt(e);
+    const bellowEl = this.detectBellowElement(e);
+    this.preDrop(bellowEl);
   }
 
   onMouseUp() {
-
+    this.activeEl.classList.remove('hidden');
+    this.moveEl.remove();
+    document.documentElement.removeEventListener('mouseup', this.onMouseUp);
   }
 
   getShift(e) {
     return {
       X: e.clientX - this.activeEl.getBoundingClientRect().left,
       Y: e.clientY - this.activeEl.getBoundingClientRect().top,
+    }
+  }
+
+  detectBellowElement(e) {
+    this.moveEl.classList.add('hidden');
+    const element = document.elementFromPoint(e.pageX, e.pageY);
+    this.moveEl.classList.remove('hidden');
+    return element;
+  }
+
+  preDrop(target) {
+    if(target.classList.contains('container-title')) {
+      target.parentNode.querySelector('.container-content').append(this.activeEl);
     }
   }
 }
