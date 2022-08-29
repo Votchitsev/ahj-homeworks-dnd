@@ -18,7 +18,9 @@ class DragnDrop {
     if (!e.target.closest('.task')) {
       return;
     }
-
+    if (e.target.closest('.close')) {
+      return;
+    }
     e.preventDefault();
 
     this.activeEl = e.target;
@@ -60,7 +62,7 @@ class DragnDrop {
     return {
       X: e.clientX - this.activeEl.getBoundingClientRect().left,
       Y: e.clientY - this.activeEl.getBoundingClientRect().top,
-    }
+    };
   }
 
   detectBellowElement(e) {
@@ -71,7 +73,15 @@ class DragnDrop {
   }
 
   preDrop(target) {
-    if(target.classList.contains('container-title')) {
+    if (target.classList.contains('container-title')) {
+      target.parentNode.querySelector('.container-content').append(this.activeEl);
+    }
+
+    if (target.classList.contains('task')) {
+      target.after(this.activeEl);
+    }
+
+    if (target.classList.contains('container-add-btn')) {
       target.parentNode.querySelector('.container-content').append(this.activeEl);
     }
   }

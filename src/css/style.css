@@ -88,6 +88,6 @@ input[type="submit"] {
   background-color: rgb(251, 246, 246);
 }
 
-.selected {
-  opacity: 0.4;
+.hidden {
+  visibility: hidden;
 }

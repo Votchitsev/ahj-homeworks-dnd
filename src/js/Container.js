@@ -36,7 +36,7 @@ class Container {
 
   createTask(task, containerEl) {
     const container = containerEl;
-    container.innerHTML += `<div class="task" draggable="true">${task}<span class="close">&#215</span></div>`;
+    container.innerHTML += `<div class="task">${task}<span class="close">&#215</span></div>`;
     this.refreshTaskListeners(container.children);
     this.closeForm();
   }
