@@ -21,7 +21,6 @@ class DragnDrop {
     if (e.target.closest('.close')) {
       return;
     }
-    e.preventDefault();
 
     this.activeEl = e.target;
     this.shift = this.getShift(e);
@@ -31,13 +30,13 @@ class DragnDrop {
     this.moveEl = this.activeEl.cloneNode(true);
     this.moveEl.style.width = `${elWidth}px`;
     this.moveEl.style.position = 'absolute';
+    this.moveEl.addEventListener('mousemove', this.onMouseMove);
 
     document.querySelector('body').append(this.moveEl);
 
     this.moveAt(e);
     this.activeEl.classList.add('hidden');
 
-    this.moveEl.addEventListener('mousemove', this.onMouseMove);
     document.documentElement.addEventListener('mouseup', this.onMouseUp);
   }
 
