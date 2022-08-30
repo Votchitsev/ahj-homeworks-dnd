@@ -8,6 +8,7 @@ class DragnDrop {
     this.onMouseDown = this.onMouseDown.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
     this.onMouseUp = this.onMouseUp.bind(this);
+    this.setCursor = this.setCursor.bind(this);
   }
 
   init() {
@@ -22,6 +23,8 @@ class DragnDrop {
       return;
     }
 
+    e.preventDefault();
+
     this.activeEl = e.target;
     this.shift = this.getShift(e);
 
@@ -31,6 +34,8 @@ class DragnDrop {
     this.moveEl.style.width = `${elWidth}px`;
     this.moveEl.style.position = 'absolute';
     this.moveEl.addEventListener('mousemove', this.onMouseMove);
+
+    this.setCursor('grabbing');
 
     document.querySelector('body').append(this.moveEl);
 
@@ -83,6 +88,10 @@ class DragnDrop {
     if (target.classList.contains('container-add-btn')) {
       target.parentNode.querySelector('.container-content').append(this.activeEl);
     }
+  }
+
+  setCursor(cursor) {
+    this.moveEl.style.cursor = cursor;
   }
 }
 
