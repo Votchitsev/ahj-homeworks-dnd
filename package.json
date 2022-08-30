@@ -3,7 +3,8 @@
   "packageManager": "yarn@3.2.3",
   "scripts": {
     "lint": "eslint .",
-    "start": "webpack serve"
+    "start": "webpack serve",
+    "build": "webpack"
   },
   "devDependencies": {
     "babel": "^6.23.0",
