@@ -78,7 +78,7 @@ class DragnDrop {
 
   preDrop(target) {
     if (target.classList.contains('container-title')) {
-      target.parentNode.querySelector('.container-content').append(this.activeEl);
+      target.parentNode.querySelector('.container-content').prepend(this.activeEl);
     }
 
     if (target.classList.contains('task')) {
