@@ -33,7 +33,7 @@ class DragnDrop {
     this.moveEl = this.activeEl.cloneNode(true);
     this.moveEl.style.width = `${elWidth}px`;
     this.moveEl.style.position = 'absolute';
-    this.moveEl.addEventListener('mousemove', this.onMouseMove);
+    window.addEventListener('mousemove', this.onMouseMove);
 
     this.setCursor('grabbing');
 
@@ -60,6 +60,7 @@ class DragnDrop {
     this.activeEl.classList.remove('hidden');
     this.moveEl.remove();
     document.documentElement.removeEventListener('mouseup', this.onMouseUp);
+    window.removeEventListener('mousemove', this.onMouseMove);
   }
 
   getShift(e) {
